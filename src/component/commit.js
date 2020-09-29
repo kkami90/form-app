@@ -1,31 +1,24 @@
-import React, { createRef, useState } from "react";
+import React from "react";
 
-import "./App.css";
-
-function App() {
-  const [user, setUser] = useState({
-    title: "",
-    rating: "",
-    medium_cover_image: "",
-  });
+const commit = (props) => {
+  const [user, setUser_s] = props;
 
   //1. 전개연산자
   //2. Computed property names(변수명를 동적으로 할수있게한다)
-
   function inputHandle(e) {
-    setUser({ ...user, [e.target.name]: e.target.value });
+    setUser_s({ ...user, [e.target.name]: e.target.value });
     // console.log(user);
   }
 
   function submitUser(e) {
     //애가 새로고침 막아주네
     e.preventDefault();
-    // headers: { "Content-Type": "application/json; charset=utf-8" },
+
     // let juser = JSON.stringify(user);
 
     fetch("http://10.100.102.2:8000/api/movie", {
       method: "post",
-      headers: { "Content-Type": "application/json; charset=utf-8" },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user),
     })
       .then((mesage) => mesage.text())
@@ -39,7 +32,7 @@ function App() {
 
   function reset(e) {
     e.preventDefault();
-    setUser({ title: "", rating: "", medium_cover_image: "" });
+    setUser_s({ title: "", rating: "", medium_cover_image: "" });
   }
 
   return (
@@ -74,6 +67,6 @@ function App() {
       </form>
     </div>
   );
-}
+};
 
-export default App;
+export default commit;
