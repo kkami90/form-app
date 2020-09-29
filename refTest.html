@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //해당 배열값들을 요리조리가공해서 다시 배열로 넣어준다
+      let a = Array.from([1, 2, 3], (x) => x + x);
+      //해당 글자열을 f,o,o 각각의 배열로 나눠서 넣어준다
+      let b = Array.from("foo");
+
+      function hello() {}
+
+      //몇번돌지 횟수를 정해서  값을 실행 또는 반환
+      let c = Array.from({ length: 3 }, () => hello);
+
+      //앞서 c가 같은번지의 값을 반복이라면 map을 이용하면
+      //깊은 복사로 각 번지수가 다른값으로 반복되서 넣어진다..?
+      let d = Array.from({ length: 3 }).map(() => hello);
+    </script>
+  </body>
+</html>
